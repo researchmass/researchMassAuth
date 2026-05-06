@@ -1,15 +1,14 @@
 import { useState } from "react";
 import logo from "./assets/logo.png";
 
-
 export default function App() {
   const [reg, setReg] = useState("");
   const [passport, setPassport] = useState("");
   const [result, setResult] = useState(null);
 
   const handleBack = () => {
-  window.location.href = "https://researchmass.org/";
-};
+    window.location.href = "https://researchmass.org/";
+  };
 
   const handleVerify = async () => {
     const cleanReg = reg.trim();
@@ -22,7 +21,7 @@ export default function App() {
 
     try {
       const res = await fetch(
-        `http://localhost:3000/users/verify?registrationNumber=${cleanReg}&passportNumber=${cleanPassport}`,
+        `https://https-verify-researchmass-org.onrender.com/users/verify?registrationNumber=${cleanReg}&passportNumber=${cleanPassport}`,
       );
 
       const data = await res.json();
@@ -54,7 +53,10 @@ export default function App() {
           </div>
 
           {/* Back Button */}
-          <button onClick={handleBack} className="bg-red-600 hover:bg-red-600 h-11 w-24 text-white px-5 py-2 rounded-full text-sm">
+          <button
+            onClick={handleBack}
+            className="bg-red-600 hover:bg-red-600 h-11 w-24 text-white px-5 py-2 rounded-full text-sm"
+          >
             Back
           </button>
         </div>
@@ -152,9 +154,7 @@ export default function App() {
 
           {/* ❌ ERROR */}
           {result && result.status === "error" && (
-            <p className="mt-4  text-center font-sm">
-              Not Found 
-            </p>
+            <p className="mt-4  text-center font-sm">Not Found</p>
           )}
 
           {/* Notes */}
