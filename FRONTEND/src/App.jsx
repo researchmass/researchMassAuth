@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "./Assets/logo.png";
+import logo from "./Assets/logo.png"; 
 
 export default function App() {
   const [reg, setReg] = useState("");
